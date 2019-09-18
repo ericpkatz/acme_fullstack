@@ -2,7 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { actions } from '../store';
 
-const Users = ({ users, destroyUser })=> {
+const Users = ({ users, destroyUser , location: { pathname }})=> {
+  if(pathname ==='/activeusers'){
+    users = users.filter(user => user.active)
+  }
   return (
     <ul>
       {

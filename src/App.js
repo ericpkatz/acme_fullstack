@@ -18,6 +18,7 @@ class App extends Component{
           loading && <div>...loading</div>
         }
         <Route path='/users' component={ Users } />
+        <Route path='/activeusers' component={ Users } />
       </HashRouter>
     );
   }
