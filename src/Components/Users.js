@@ -15,9 +15,13 @@ const Users = ({ users, destroyUser })=> {
   );
 };
 
-export default connect(({ users })=> {
+export default connect(({ users }, { location })=> {
+  let filtered = users; 
+  if(location.pathname === '/users/active'){
+    filtered = users.filter( user => user.active );
+  }
   return {
-    users
+    users: filtered
   };
 }, (dispatch)=> {
   return {
