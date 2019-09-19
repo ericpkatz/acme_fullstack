@@ -1,4 +1,4 @@
-import { DESTROY_USER, SET_USERS, SET_LOADING } from './constants';
+import { UPDATE_USER, DESTROY_USER, SET_USERS, SET_LOADING } from './constants';
 import axios from 'axios';
 
 
@@ -23,6 +23,13 @@ const _destroyUser = (user)=> {
   };
 };
 
+const _updateUser = (user)=> {
+  return {
+    type: UPDATE_USER,
+    user
+  };
+};
+
 
 const fetchUsers = ()=> {
   return async(dispatch)=> {
@@ -42,4 +49,13 @@ const destroyUser = (user)=> {
   };
 };
 
-export { fetchUsers, destroyUser };
+const updateUser = (user)=> {
+  return async(dispatch)=> {
+    dispatch(setLoading(true));
+    await axios.put(`/api/users/${user.id}`, user);
+    dispatch(setLoading(false));
+    return dispatch(_updateUser(user));
+  };
+};
+
+export { fetchUsers, destroyUser, updateUser };

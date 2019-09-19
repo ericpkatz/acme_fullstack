@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+app.use(express.json());
 const path = require('path');
 const { User } = require('./db').models;
 
@@ -13,6 +14,13 @@ app.get('/', (req, res, next)=> res.sendFile(path.join(__dirname, 'index.html'))
 app.get('/api/users', (req, res, next)=> {
   User.findAll()
     .then( users=> res.send(users))
+    .catch(next);
+});
+
+app.put('/api/users/:id', (req, res, next)=> {
+  User.findByPk(req.params.id)
+    .then( user => user.update(req.body))
+    .then( user => res.send(user))
     .catch(next);
 });
 
