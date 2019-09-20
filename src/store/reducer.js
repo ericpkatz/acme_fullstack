@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { UPDATE_USER, SET_USERS, SET_LOADING, DESTROY_USER } from './constants';
+import { CREATE_USER, UPDATE_USER, SET_USERS, SET_LOADING, DESTROY_USER } from './constants';
 
 const loadingReducer = (state = false, action)=> {
   if(action.type === SET_LOADING){
@@ -18,6 +18,9 @@ const usersReducer = (state = [], action)=> {
       break;
     case UPDATE_USER:
       return state.map(_user => _user.id === action.user.id ? action.user : _user);
+      break;
+    case CREATE_USER:
+      return [...state, action.user]; 
       break;
   }
   return state;

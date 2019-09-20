@@ -10,6 +10,7 @@ const Nav = ({ count, activeCount, location: { pathname } })=> {
         <Link to='/' className={ pathname === '/' ? 'active': ''}>Home</Link>
         <Link to='/users' className={ pathname === '/users' ? 'active': ''}>Users({ count })</Link>
         <Link to='/users/active' className={ pathname === '/users/active' ? 'active': ''}>Active Users({ activeCount })</Link>
+        <Link to='/users/create' className={ pathname === '/users/create' ? 'active': ''}>Create A User</Link>
       </nav>
     </div>
   );
