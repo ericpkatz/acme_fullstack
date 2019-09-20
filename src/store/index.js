@@ -3,9 +3,11 @@ import reducer from './reducer';
 import thunk from 'redux-thunk';
 import { SET_USERS, SET_LOADING, DESTROY_USER } from './constants';
 import * as actions from './actions';
+import logger from 'redux-logger';
 
 
-const store = createStore(reducer, applyMiddleware(thunk));
+
+const store = createStore(reducer, applyMiddleware(thunk, logger));
 
 export default store;
 export { actions }; 

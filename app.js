@@ -24,9 +24,19 @@ app.put('/api/users/:id', (req, res, next)=> {
     .catch(next);
 });
 
+app.post('/api/users', (req, res, next)=> {
+  User.create(req.body)
+    .then( user => res.status(201).send(user))
+    .catch(next);
+});
+
 app.delete('/api/users/:id', (req, res, next)=> {
   User.findByPk(req.params.id)
     .then( user => user.destroy())
     .then( () => res.sendStatus(204))
     .catch(next);
+});
+
+app.use((err, req, res, next)=> {
+  res.status(err.status || 500).send({ message: err.message});
 });

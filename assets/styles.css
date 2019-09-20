@@ -16,3 +16,22 @@ nav a {
   border-radius: 0.25rem;
   color: white;
 }
+
+.form {
+  border-radius: 1rem;
+  padding: 1rem;
+  border: solid 1px tomato;
+  width: 50%;
+  margin: 1rem 25%;
+}
+input, button {
+  height: 2rem;
+}
+.form > div {
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.form > div > * {
+  flex: 1;
+}
